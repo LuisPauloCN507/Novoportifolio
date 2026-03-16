@@ -13,35 +13,41 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* Hero */
+/* Hero & Typewriter */
 .hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
-.highlight { color: var(--primary-color); }
-.hero p { color: var(--secondary-text); font-size: 1.2rem; margin: 15px 0 30px; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); min-height: 1.2em; }
+.highlight { 
+    color: var(--primary-color); 
+    border-right: 3px solid var(--primary-color);
+    padding-right: 5px;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
+}
 
 /* Botões */
-.btn-primary, .btn-secondary { padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: var(--transition); display: inline-block; }
-.btn-primary { background: var(--primary-color); color: #000; }
+.btn-primary, .btn-secondary { padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: var(--transition); display: inline-block; cursor: pointer; }
+.btn-primary { background: var(--primary-color); color: #000; border: none; }
 .btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 223, 154, 0.3); }
 
 /* Grids */
 section { padding: 60px 0; }
 h2 { text-align: center; margin-bottom: 40px; color: var(--primary-color); font-size: 2rem; }
-
-.skills-grid, .projects-grid { display: grid; gap: 20px; }
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-.projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
 /* Cards */
-.skill-card, .project-card { background: var(--card-bg); padding: 25px; border-radius: 12px; transition: var(--transition); border: 1px solid #334155; }
+.skill-card, .project-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid #334155; transition: var(--transition); }
 .skill-card { text-align: center; }
 .skill-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
 .skill-card img { width: 45px; margin-bottom: 10px; }
 
-/* Destaque nos Projetos da Vercel */
-.project-card.featured { border: 1px solid var(--primary-color); box-shadow: 0 0 20px rgba(0, 223, 154, 0.05); }
-.project-card h3 { color: var(--primary-color); margin-bottom: 10px; }
+.project-card.featured { border-color: var(--primary-color); }
+.project-card h3 { color: var(--primary-color); margin-bottom: 10px; text-transform: capitalize; }
 .project-card p { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 20px; }
 
 .project-tags { display: flex; gap: 8px; margin-bottom: 20px; }
