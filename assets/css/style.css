@@ -1,21 +1,25 @@
-/* Variáveis */
+/* ============================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ============================================================ */
 :root {
-    --primary-color: #00df9a;
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --text-color: #f8fafc;
-    --secondary-text: #94a3b8;
-    --transition: 0.3s ease;
+    --primary-color: #00df9a;    /* Verde Neon */
+    --bg-color: #0f172a;         /* Azul Escuro Fundo */
+    --card-bg: #1e293b;          /* Azul Card */
+    --text-color: #f8fafc;       /* Branco Gelo */
+    --secondary-text: #94a3b8;   /* Cinza Azulado */
+    --transition: 0.3s ease;     /* Velocidade das animações */
 }
 
-/* Reset Global */
+/* Reset básico para evitar espaços indesejados */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth; /* Deslize suave ao clicar nos links */
+}
 
 body {
     background-color: var(--bg-color);
@@ -26,23 +30,31 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Hero Section */
+/* ============================================================
+   2. HERO SECTION (BANNER INICIAL)
+   ============================================================ */
 .hero {
-    height: 70vh;
+    height: 90vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 {
     font-size: clamp(1.8rem, 6vw, 3.5rem);
-    font-family: 'Fira Code', monospace;
+    font-family: 'Fira Code', monospace; /* Fonte estilo código */
     color: var(--primary-color);
     margin-bottom: 10px;
 }
@@ -50,76 +62,122 @@ body {
 .hero-subtitle {
     color: var(--secondary-text);
     font-size: 1.1rem;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-/* Botões */
+/* Links do GitHub e LinkedIn no topo */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.social-links img {
+    width: 45px;
+    transition: var(--transition);
+}
+
+.social-links img:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+/* Botões Tech Stack e Projetos */
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
 .btn-primary, .btn-secondary {
-    padding: 12px 25px;
+    padding: 12px 28px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
     transition: var(--transition);
     display: inline-block;
-    margin: 10px 5px;
 }
 
-.btn-primary { background: var(--primary-color); color: #000; }
-.btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 223, 154, 0.4); }
+.btn-primary { 
+    background: var(--primary-color); 
+    color: #000; 
+}
 
-/* Títulos das Seções - CENTRALIZADOS E VERDES */
-section { padding: 60px 0; }
+.btn-secondary { 
+    border: 2px solid var(--primary-color); 
+    color: var(--primary-color); 
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 223, 154, 0.4);
+}
+
+/* ============================================================
+   3. TÍTULOS E TEXTOS DAS SEÇÕES
+   ============================================================ */
+section {
+    padding: 80px 0;
+}
+
+/* Estilo para todos os títulos H2 */
 h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--primary-color) !important;
+    color: var(--primary-color) !important; /* Verde Neon */
+    text-align: center;                     /* Centralizado */
+    margin-bottom: 50px;
     font-size: 2.2rem;
+    width: 100%;
     position: relative;
 }
 
+/* Linha verde abaixo dos títulos */
 h2::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 3px;
+    width: 60px;
+    height: 4px;
     background: var(--primary-color);
     margin: 10px auto 0;
 }
 
-/* Sobre Mim - CENTRALIZADO */
+/* Centralização do texto "Sobre Mim" */
 #sobre-mim .section-content {
-    max-width: 800px;
-    margin: 0 auto;
     text-align: center;
-}
-
-#sobre-mim p {
+    max-width: 850px;
+    margin: 0 auto;
     color: var(--secondary-text);
-    font-size: 1.1rem;
 }
 
 #sobre-mim strong {
     color: var(--text-color);
 }
 
-/* Grids */
+/* ============================================================
+   4. GRIDS E CARDS DE HABILIDADES (SKILLS)
+   ============================================================ */
 .skills-grid, .soft-skills-grid, .projects-grid {
     display: grid;
-    gap: 20px;
+    gap: 25px;
 }
 
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
-.soft-skills-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-.projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+/* Grids responsivos que se ajustam ao tamanho da tela */
+.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.soft-skills-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
-/* Cards */
-.skill-card, .soft-card, .project-card {
+/* CARD DE SKILL: Focado na correção de alinhamento */
+.skill-card, .soft-card {
     background: var(--card-bg);
-    padding: 25px;
-    border-radius: 12px;
+    padding: 30px 15px;
+    border-radius: 15px;
     border: 1px solid #334155;
     transition: var(--transition);
+    
+    /* Centralização Absoluta do ícone e texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
     text-align: center;
 }
 
@@ -128,26 +186,60 @@ h2::after {
     transform: translateY(-5px);
 }
 
-.skill-card img, .soft-card img { width: 45px; margin-bottom: 10px; }
-.skill-card h3, .soft-card h3 { font-size: 0.9rem; color: var(--text-color); }
-.soft-card p { font-size: 0.75rem; color: var(--secondary-text); margin-top: 5px; }
+.skill-card img, .soft-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
 
-/* Projetos */
+.skill-card h3, .soft-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin: 0;
+    width: 100%;
+}
+
+/* ============================================================
+   5. CARDS DE PROJETOS (DESTAQUES E GITHUB)
+   ============================================================ */
 .project-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #334155;
+    transition: var(--transition);
+    
+    /* Layout para alinhar conteúdo e botão de forma organizada */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: left;
 }
 
-.project-card.featured { border-color: var(--primary-color); }
-.project-card h3 { color: var(--primary-color); margin-bottom: 10px; }
-.project-card p { font-size: 0.85rem; color: var(--secondary-text); margin-bottom: 15px; }
+.project-card.featured {
+    border-color: var(--primary-color); /* Borda verde nos principais */
+}
 
-.project-tags { display: flex; gap: 8px; margin-bottom: 15px; }
-.project-tags img { height: 25px; width: auto; }
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
 
-/* Ícone do GitHub nos Repositórios */
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
+
+/* Ícones das linguagens dentro do card */
+.project-tags img {
+    height: 28px;
+    width: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilo para o ícone do GitHub no rodapé do card */
 .github-icon-link {
     display: inline-block;
     transition: var(--transition);
@@ -158,12 +250,17 @@ h2::after {
     filter: drop-shadow(0 0 8px var(--primary-color));
 }
 
-.loading-text { text-align: center; color: var(--secondary-text); grid-column: 1 / -1; }
-
+/* ============================================================
+   6. RODAPÉ (FOOTER)
+   ============================================================ */
 footer {
     text-align: center;
     padding: 60px 20px;
     border-top: 1px solid #334155;
     color: var(--secondary-text);
 }
-footer span { color: var(--primary-color); }
+
+footer span {
+    color: var(--primary-color);
+    font-weight: bold;
+}

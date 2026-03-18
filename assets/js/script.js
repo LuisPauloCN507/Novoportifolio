@@ -1,28 +1,35 @@
-// --- EFEITO DE CODIFICAÇÃO (DECRYPTION) ---
+/* ==========================================
+   EFEITO DE CODIFICAÇÃO (HACKER) NO NOME
+   ========================================== */
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
 let interval = null;
 
 function startCodingEffect(element) {
     let iteration = 0;
     clearInterval(interval);
+    
     interval = setInterval(() => {
         element.innerText = element.innerText.split("").map((letter, index) => {
             if (index < iteration) return element.dataset.value[index];
             return letters[Math.floor(Math.random() * letters.length)];
         }).join("");
+        
         if (iteration >= element.dataset.value.length) clearInterval(interval);
         iteration += 1 / 3;
     }, 30);
 }
 
-// --- BUSCA REPOSITÓRIOS GITHUB COM ÍCONE DO GITHUB ---
+/* ==========================================
+   BUSCA DINÂMICA DE REPOSITÓRIOS GITHUB
+   ========================================== */
 async function getRepositories() {
     const user = 'LuisPauloCN507';
     const repoList = document.getElementById('repo-list');
     
-    const langMap = {
-        'JavaScript': 'js', 'HTML': 'html', 'CSS': 'css',
-        'Python': 'py', 'Go': 'go', 'C++': 'cpp', 'C': 'c', 'TypeScript': 'ts'
+    // Mapeamento de Linguagens para Ícones
+    const langMap = { 
+        'JavaScript': 'js', 'HTML': 'html', 'CSS': 'css', 
+        'Python': 'py', 'Go': 'go', 'C++': 'cpp', 'C': 'c', 'TypeScript': 'ts' 
     };
 
     try {
@@ -31,19 +38,19 @@ async function getRepositories() {
         
         if (repoList) repoList.innerHTML = ''; 
 
+        // Excluir repositórios que já estão em destaque
         const exclude = ['note-keeper', 'focus-timer', 'dev-finder', 'Novoportifolio', user];
 
         repos.filter(repo => !exclude.includes(repo.name)).slice(0, 4).forEach(repo => {
             const iconKey = langMap[repo.language] || 'code';
-            const iconUrl = `https://skillicons.dev/icons?i=${iconKey}`;
-
+            
             repoList.innerHTML += `
                 <article class="project-card">
                     <div>
                         <h3>${repo.name.replace(/-/g, ' ')}</h3>
-                        <p>${repo.description || 'Projeto em desenvolvimento.'}</p>
+                        <p>${repo.description || 'Explorando novas fronteiras tecnológicas.'}</p>
                         <div class="project-tags">
-                            <img src="${iconUrl}" alt="${repo.language}">
+                            <img src="https://skillicons.dev/icons?i=${iconKey}" alt="${repo.language}">
                         </div>
                     </div>
                     <div style="margin-top: 20px;">
@@ -54,15 +61,21 @@ async function getRepositories() {
                 </article>`;
         });
     } catch (e) {
-        if (repoList) repoList.innerHTML = '<p class="loading-text">Erro ao carregar repositórios.</p>';
+        console.error("Erro ao carregar GitHub:", e);
     }
 }
 
+/* ==========================================
+   INICIALIZAÇÃO AO CARREGAR A PÁGINA
+   ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
     const nameElement = document.querySelector("#coding-name");
+    
     if (nameElement) {
         startCodingEffect(nameElement);
+        // Reinicia o efeito ao passar o mouse
         nameElement.onmouseover = event => startCodingEffect(event.target);
     }
+    
     getRepositories();
 });
