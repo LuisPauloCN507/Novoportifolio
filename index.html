@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Paulo | Dev Portfolio</title>
+    <title>Luis Paulo | Front-end Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -12,22 +12,25 @@
     <header class="hero">
         <div class="container">
             <h1><span id="coding-name" data-value="LUIS PAULO COSTA NETO">LUIS PAULO COSTA NETO</span></h1>
-            <p>Front-end Developer</p>
+            <p class="hero-subtitle">Front-end Developer</p>
             <div class="cta-buttons">
                 <a href="#habilidades" class="btn-primary">Tech Stack</a>
-                <a href="#destaques" class="btn-secondary">Projetos</a>
+                <a href="#destaques" class="btn-secondary">Ver Projetos</a>
             </div>
         </div>
     </header>
 
     <main class="container">
+        
         <section id="sobre-mim">
             <h2>Sobre Mim</h2>
-            <p>
-                Desenvolvedor focado em performance e interfaces modernas. 
-                Utilizo o <strong>WSL2</strong> como ambiente principal para criar soluções robustas, 
-                indo do Front-end ao System Programming.
-            </p>
+            <div class="section-content">
+                <p>
+                    Olá! Sou o <strong>Luis Paulo</strong>, desenvolvedor focado em performance e interfaces modernas. 
+                    Utilizo o <strong>WSL2 (Ubuntu)</strong> como ambiente principal para criar soluções robustas, 
+                    indo do Front-end ao System Programming com linguagens de baixo nível.
+                </p>
+            </div>
         </section>
 
         <section id="habilidades">
@@ -36,19 +39,21 @@
                 <div class="skill-card"><img src="https://skillicons.dev/icons?i=html" alt="HTML5"><h3>HTML5</h3></div>
                 <div class="skill-card"><img src="https://skillicons.dev/icons?i=css" alt="CSS3"><h3>CSS3</h3></div>
                 <div class="skill-card"><img src="https://skillicons.dev/icons?i=js" alt="JS"><h3>JavaScript</h3></div>
-                <div class="skill-card"><img src="https://skillicons.dev/icons?i=typescript" alt="TypeScript"><h3>TypeScript</h3></div>
+                <div class="skill-card"><img src="https://skillicons.dev/icons?i=typescript" alt="TS"><h3>TypeScript</h3></div>
                 <div class="skill-card"><img src="https://skillicons.dev/icons?i=react" alt="React"><h3>React</h3></div>
-                <div class="skill-card"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"><h3>Tailwind CSS</h3></div>
+                <div class="skill-card"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"><h3>Tailwind</h3></div>
+                <div class="skill-card"><img src="https://skillicons.dev/icons?i=linux" alt="Linux"><h3>Linux</h3></div>
+                <div class="skill-card"><img src="https://skillicons.dev/icons?i=git" alt="Git"><h3>Git</h3></div>
             </div>
         </section>
 
         <section id="soft-skills">
-            <h2>Soft Skills & Specialties</h2>
+            <h2>Soft Skills</h2>
             <div class="soft-skills-grid">
-                <div class="soft-card"><img src="https://skillicons.dev/icons?i=python" alt="Python"><h3>Python</h3><p>Automação</p></div>
-                <div class="soft-card"><img src="https://skillicons.dev/icons?i=go" alt="Go"><h3>Go</h3><p>Sistemas</p></div>
-                <div class="soft-card"><img src="https://skillicons.dev/icons?i=c" alt="C"><h3>C</h3><p>Lógica</p></div>
-                <div class="soft-card"><img src="https://skillicons.dev/icons?i=cpp" alt="C++"><h3>C++</h3><p>Performance</p></div>
+                <div class="soft-card"><img src="https://skillicons.dev/icons?i=python" alt="Python"><h3>Python</h3></div>
+                <div class="soft-card"><img src="https://skillicons.dev/icons?i=go" alt="Go"><h3>Go</h3></div>
+                <div class="soft-card"><img src="https://skillicons.dev/icons?i=c" alt="C"><h3>C</h3></div>
+                <div class="soft-card"><img src="https://skillicons.dev/icons?i=cpp" alt="C++"><h3>C++</h3></div>
             </div>
         </section>
 
@@ -58,39 +63,27 @@
                 <article class="project-card featured">
                     <div class="project-info">
                         <h3>Note Keeper</h3>
-                        <p>Gestão de notas com React.</p>
-                        <div class="project-tags">
-                            <img src="https://skillicons.dev/icons?i=react,tailwind" alt="Techs">
-                        </div>
-                        <div class="project-links">
-                            <a href="https://note-keeper-bice.vercel.app/" target="_blank" class="btn-primary">Acessar</a>
-                        </div>
+                        <p>Gestão de notas com React e persistência de dados.</p>
+                        <div class="project-tags"><img src="https://skillicons.dev/icons?i=react,tailwind" alt="Techs"></div>
+                        <div class="project-links"><a href="https://note-keeper-bice.vercel.app/" target="_blank" class="btn-primary">Acessar Site</a></div>
                     </div>
                 </article>
 
                 <article class="project-card featured">
                     <div class="project-info">
                         <h3>Focus Timer</h3>
-                        <p>Timer Pomodoro de alta performance.</p>
-                        <div class="project-tags">
-                            <img src="https://skillicons.dev/icons?i=js,css" alt="Techs">
-                        </div>
-                        <div class="project-links">
-                            <a href="https://focus-timer-three-xi.vercel.app/" target="_blank" class="btn-primary">Acessar</a>
-                        </div>
+                        <p>Timer Pomodoro para alta produtividade no navegador.</p>
+                        <div class="project-tags"><img src="https://skillicons.dev/icons?i=js,css" alt="Techs"></div>
+                        <div class="project-links"><a href="https://focus-timer-three-xi.vercel.app/" target="_blank" class="btn-primary">Acessar Site</a></div>
                     </div>
                 </article>
 
                 <article class="project-card featured">
                     <div class="project-info">
                         <h3>Dev Finder</h3>
-                        <p>Buscador via GitHub API.</p>
-                        <div class="project-tags">
-                            <img src="https://skillicons.dev/icons?i=js,html" alt="Techs">
-                        </div>
-                        <div class="project-links">
-                            <a href="https://dev-finder-omega-vert.vercel.app/" target="_blank" class="btn-primary">Acessar</a>
-                        </div>
+                        <p>Buscador de usuários consumindo a API do GitHub.</p>
+                        <div class="project-tags"><img src="https://skillicons.dev/icons?i=js,html" alt="Techs"></div>
+                        <div class="project-links"><a href="https://dev-finder-omega-vert.vercel.app/" target="_blank" class="btn-primary">Acessar Site</a></div>
                     </div>
                 </article>
             </div>
@@ -99,13 +92,14 @@
         <section id="github-repos">
             <h2>Outros Repositórios</h2>
             <div id="repo-list" class="projects-grid">
-                <p>Sincronizando com o GitHub...</p>
+                <p class="loading-text">Sincronizando com o GitHub...</p>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2026 | Desenvolvido por Luis Paulo</p>
+        <p>&copy; 2026 | Desenvolvido com <span>💚</span> por Luis Paulo Costa Neto</p>
     </footer>
 
     <script src="assets/js/script.js"></script>

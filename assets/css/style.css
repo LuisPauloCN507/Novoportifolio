@@ -1,4 +1,4 @@
-/* Variáveis de Cores */
+/* Variáveis */
 :root {
     --primary-color: #00df9a;
     --bg-color: #0f172a;
@@ -15,15 +15,14 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-color); /* ISSO GARANTE O FUNDO ESCURO */
+    background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -45,6 +44,13 @@ body {
     font-size: clamp(1.8rem, 6vw, 3.5rem);
     font-family: 'Fira Code', monospace;
     color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
 }
 
 /* Botões */
@@ -62,10 +68,42 @@ body {
 .btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 223, 154, 0.4); }
 
-/* Grids */
+/* Títulos das Seções - CENTRALIZADOS E VERDES */
 section { padding: 60px 0; }
-h2 { text-align: center; margin-bottom: 40px; color: var(--primary-color); font-size: 2rem; }
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-color) !important;
+    font-size: 2.2rem;
+    position: relative;
+}
 
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 10px auto 0;
+}
+
+/* Sobre Mim - CENTRALIZADO */
+#sobre-mim .section-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#sobre-mim p {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+#sobre-mim strong {
+    color: var(--text-color);
+}
+
+/* Grids */
 .skills-grid, .soft-skills-grid, .projects-grid {
     display: grid;
     gap: 20px;
@@ -85,15 +123,16 @@ h2 { text-align: center; margin-bottom: 40px; color: var(--primary-color); font-
     text-align: center;
 }
 
-.skill-card:hover, .soft-card:hover, .project-card:hover {
+.skill-card:hover, .soft-card:hover {
     border-color: var(--primary-color);
     transform: translateY(-5px);
 }
 
 .skill-card img, .soft-card img { width: 45px; margin-bottom: 10px; }
-.soft-card p { font-size: 0.8rem; color: var(--secondary-text); }
+.skill-card h3, .soft-card h3 { font-size: 0.9rem; color: var(--text-color); }
+.soft-card p { font-size: 0.75rem; color: var(--secondary-text); margin-top: 5px; }
 
-/* Estilo dos Projetos */
+/* Projetos */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -102,15 +141,29 @@ h2 { text-align: center; margin-bottom: 40px; color: var(--primary-color); font-
 }
 
 .project-card.featured { border-color: var(--primary-color); }
-.project-card h3 { color: var(--primary-color); margin-bottom: 10px; text-transform: capitalize; }
+.project-card h3 { color: var(--primary-color); margin-bottom: 10px; }
 .project-card p { font-size: 0.85rem; color: var(--secondary-text); margin-bottom: 15px; }
 
 .project-tags { display: flex; gap: 8px; margin-bottom: 15px; }
 .project-tags img { height: 25px; width: auto; }
 
+/* Ícone do GitHub nos Repositórios */
+.github-icon-link {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.github-icon-link:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+.loading-text { text-align: center; color: var(--secondary-text); grid-column: 1 / -1; }
+
 footer {
     text-align: center;
-    padding: 40px;
+    padding: 60px 20px;
     border-top: 1px solid #334155;
     color: var(--secondary-text);
 }
+footer span { color: var(--primary-color); }

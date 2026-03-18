@@ -15,26 +15,21 @@ function startCodingEffect(element) {
     }, 30);
 }
 
-// --- BUSCA REPOSITÓRIOS GITHUB COM ÍCONES ---
+// --- BUSCA REPOSITÓRIOS GITHUB COM ÍCONE DO GITHUB ---
 async function getRepositories() {
     const user = 'LuisPauloCN507';
     const repoList = document.getElementById('repo-list');
     
-    // Mapeia a linguagem do GitHub para o ID do Skill Icons
     const langMap = {
-        'JavaScript': 'js',
-        'HTML': 'html',
-        'CSS': 'css',
-        'Python': 'py',
-        'Go': 'go',
-        'C++': 'cpp',
-        'C': 'c'
+        'JavaScript': 'js', 'HTML': 'html', 'CSS': 'css',
+        'Python': 'py', 'Go': 'go', 'C++': 'cpp', 'C': 'c', 'TypeScript': 'ts'
     };
 
     try {
         const response = await fetch(`https://api.github.com/users/${user}/repos?sort=updated`);
         const repos = await response.json();
-        repoList.innerHTML = ''; 
+        
+        if (repoList) repoList.innerHTML = ''; 
 
         const exclude = ['note-keeper', 'focus-timer', 'dev-finder', 'Novoportifolio', user];
 
@@ -51,19 +46,23 @@ async function getRepositories() {
                             <img src="${iconUrl}" alt="${repo.language}">
                         </div>
                     </div>
-                    <div style="margin-top: 15px;">
-                        <a href="${repo.html_url}" target="_blank" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px solid var(--primary-color); font-size: 0.8rem;">Código GitHub</a>
+                    <div style="margin-top: 20px;">
+                        <a href="${repo.html_url}" target="_blank" class="github-icon-link">
+                            <img src="https://skillicons.dev/icons?i=github" alt="GitHub" style="width: 32px;">
+                        </a>
                     </div>
                 </article>`;
         });
     } catch (e) {
-        repoList.innerHTML = '<p>Erro ao carregar repositórios.</p>';
+        if (repoList) repoList.innerHTML = '<p class="loading-text">Erro ao carregar repositórios.</p>';
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const nameElement = document.querySelector("#coding-name");
-    startCodingEffect(nameElement);
+    if (nameElement) {
+        startCodingEffect(nameElement);
+        nameElement.onmouseover = event => startCodingEffect(event.target);
+    }
     getRepositories();
-    nameElement.onmouseover = event => startCodingEffect(event.target);
 });
