@@ -2,31 +2,36 @@
    1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
    ============================================================ */
 :root {
-    --primary-color: #00df9a;    /* Verde Neon */
-    --bg-color: #0f172a;         /* Azul Escuro Fundo */
-    --card-bg: #1e293b;          /* Azul Card */
-    --text-color: #f8fafc;       /* Branco Gelo */
-    --secondary-text: #94a3b8;   /* Cinza Azulado */
-    --transition: 0.3s ease;     /* Velocidade das animações */
+    --primary-color: #00d1ff;    /* Azul Ciano Neon */
+    --bg-color: #000000;          /* Preto Puro */
+    --card-bg: #0d0d0d;          /* Cinza quase preto */
+    --text-color: #f8fafc;
+    --secondary-text: #94a3b8;
+    --transition: 0.3s ease;
 }
 
-/* Reset básico para evitar espaços indesejados */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth; /* Deslize suave ao clicar nos links */
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-color);
+    background-color: transparent;
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Canvas fixo no fundo */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--bg-color);
+    pointer-events: none;
 }
 
 .container {
@@ -36,7 +41,7 @@ body {
 }
 
 /* ============================================================
-   2. HERO SECTION (BANNER INICIAL)
+   2. HERO SECTION
    ============================================================ */
 .hero {
     height: 90vh;
@@ -46,221 +51,97 @@ body {
     text-align: center;
 }
 
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .hero h1 {
     font-size: clamp(1.8rem, 6vw, 3.5rem);
-    font-family: 'Fira Code', monospace; /* Fonte estilo código */
+    font-family: 'Fira Code', monospace;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(0, 209, 255, 0.4);
 }
 
-.hero-subtitle {
-    color: var(--secondary-text);
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
+.hero-subtitle { color: var(--secondary-text); margin: 15px 0 25px; font-size: 1.2rem; }
 
-/* Links do GitHub e LinkedIn no topo */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 35px;
-}
+.social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+.social-links img { width: 45px; transition: var(--transition); }
+.social-links img:hover { transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--primary-color)); }
 
-.social-links img {
-    width: 45px;
-    transition: var(--transition);
-}
-
-.social-links img:hover {
-    transform: translateY(-5px);
-    filter: drop-shadow(0 0 10px var(--primary-color));
-}
-
-/* Botões Tech Stack e Projetos */
-.cta-buttons {
-    display: flex;
-    gap: 15px;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 12px 28px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
-    display: inline-block;
-}
-
-.btn-primary { 
-    background: var(--primary-color); 
-    color: #000; 
-}
-
-.btn-secondary { 
-    border: 2px solid var(--primary-color); 
-    color: var(--primary-color); 
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 223, 154, 0.4);
-}
+.cta-buttons { display: flex; gap: 15px; justify-content: center; }
+.btn-primary { background: var(--primary-color); color: #000; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: var(--transition); border: none; cursor: pointer; }
+.btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: var(--transition); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 209, 255, 0.5); }
 
 /* ============================================================
-   3. TÍTULOS E TEXTOS DAS SEÇÕES
+   3. SEÇÕES E GRIDS (ORGANIZADO)
    ============================================================ */
 section {
-    padding: 80px 0;
-}
-
-/* Estilo para todos os títulos H2 */
-h2 {
-    color: var(--primary-color) !important; /* Verde Neon */
-    text-align: center;                     /* Centralizado */
-    margin-bottom: 50px;
-    font-size: 2.2rem;
-    width: 100%;
+    padding: 100px 0;
     position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.65); /* Fundo preto transparente */
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #111;
 }
 
-/* Linha verde abaixo dos títulos */
-h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--primary-color);
-    margin: 10px auto 0;
+h2 { color: var(--primary-color); text-align: center; margin-bottom: 50px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+h2::after { content: ''; display: block; width: 60px; height: 3px; background: var(--primary-color); margin: 10px auto; box-shadow: 0 0 10px var(--primary-color); }
+
+.skills-grid, .soft-skills-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    width: 100%;
 }
 
-/* Centralização do texto "Sobre Mim" */
-#sobre-mim .section-content {
-    text-align: center;
-    max-width: 850px;
-    margin: 0 auto;
-    color: var(--secondary-text);
-}
-
-#sobre-mim strong {
-    color: var(--text-color);
+.projects-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: stretch;
 }
 
 /* ============================================================
-   4. GRIDS E CARDS DE HABILIDADES (SKILLS)
+   4. CARDS E DESTAQUES
    ============================================================ */
-.skills-grid, .soft-skills-grid, .projects-grid {
-    display: grid;
-    gap: 25px;
-}
-
-/* Grids responsivos que se ajustam ao tamanho da tela */
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-.soft-skills-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-.projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-
-/* CARD DE SKILL: Focado na correção de alinhamento */
 .skill-card, .soft-card {
     background: var(--card-bg);
     padding: 30px 15px;
-    border-radius: 15px;
-    border: 1px solid #334155;
+    border-radius: 12px;
+    border: 1px solid #222;
+    text-align: center;
     transition: var(--transition);
-    
-    /* Centralização Absoluta do ícone e texto */
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
     justify-content: center;
-    text-align: center;
 }
+.skill-card img, .soft-card img { width: 50px; margin-bottom: 15px; }
+.skill-card:hover, .soft-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
 
-.skill-card:hover, .soft-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
-}
-
-.skill-card img, .soft-card img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-    object-fit: contain;
-}
-
-.skill-card h3, .soft-card h3 {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    margin: 0;
-    width: 100%;
-}
-
-/* ============================================================
-   5. CARDS DE PROJETOS (DESTAQUES E GITHUB)
-   ============================================================ */
 .project-card {
     background: var(--card-bg);
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid #334155;
-    transition: var(--transition);
-    
-    /* Layout para alinhar conteúdo e botão de forma organizada */
+    border: 1px solid #222;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
-}
-
-.project-card.featured {
-    border-color: var(--primary-color); /* Borda verde nos principais */
-}
-
-.project-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 12px;
-}
-
-.project-card p {
-    font-size: 0.9rem;
-    color: var(--secondary-text);
-    margin-bottom: 20px;
-}
-
-/* Ícones das linguagens dentro do card */
-.project-tags img {
-    height: 28px;
-    width: auto;
-    margin-bottom: 15px;
-}
-
-/* Estilo para o ícone do GitHub no rodapé do card */
-.github-icon-link {
-    display: inline-block;
     transition: var(--transition);
 }
 
-.github-icon-link:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 8px var(--primary-color));
-}
-
-/* ============================================================
-   6. RODAPÉ (FOOTER)
-   ============================================================ */
-footer {
-    text-align: center;
-    padding: 60px 20px;
-    border-top: 1px solid #334155;
-    color: var(--secondary-text);
-}
-
-footer span {
+/* DESTAQUE NOS TÍTULOS DOS PROJETOS */
+.project-card h3 {
     color: var(--primary-color);
-    font-weight: bold;
+    font-size: 1.4rem;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 12px rgba(0, 209, 255, 0.7); /* Efeito Glow */
 }
+
+.project-card.featured { border-color: var(--primary-color); }
+.project-card:hover { border-color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); }
+
+.project-tags img { height: 28px; margin: 10px 0; }
+
+footer { text-align: center; padding: 60px 20px; background: transparent; color: var(--secondary-text); position: relative; z-index: 1; }
+footer span { color: var(--primary-color); font-weight: bold; }
